@@ -85,7 +85,8 @@
     </form>
 
     <?php
-        
+        include'function.php';
+        starts("菱形",3);
 
     ?>
     

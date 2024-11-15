@@ -83,10 +83,13 @@
     <?php
     $dsn="mysql:host=localhost;charset=utf8;dbname=crud";
     $pdo=new pdo($dsn,'root','');
-    $sql="select * form member where id='{$_GET['id']}'";
-    // $sql="select * form member where id='{$_GET['id']}'"
-     $mem=$pdo->query()->fetch(PDO::FETCH_ASSPC);
-    //$mem=$pdo->query("select * from `member` where `id`='{$_GET['id']}'")->fetch(PDO::FETCH_ASSOC);
+    $sql="select * from member where id={$_GET['id']}";
+    // $sql="select * from member where id='{$_GET['id']}'"
+    //  $mem=$pdo->query($sql)->fetch(PDO::FETCH_ASSPC);
+    // $mem=$pdo->query("select * from `member` where `id`='{$_GET['id']}'")->fetch(PDO::FETCH_ASSOC);
+    $mem=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
+
+
     echo"<pre>";
     print_r($mem);
     echo"</pre>";

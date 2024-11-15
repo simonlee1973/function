@@ -1,23 +1,31 @@
 <?php 
 
+include "function.php";
 
+// $dsn="mysql:host=localhost;charset=utf8;dbname=crud";
+// $pdo=new PDO($dsn,'root','');
+// $acc=$_POST['acc'];
+// $pw=$_POST['pw'];
 
-$dsn="mysql:host=localhost;charset=utf8;dbname=crud";
-$pdo=new PDO($dsn,'root','');
-$acc=$_POST['acc'];
-$pw=$_POST['pw'];
+// if(!isset($_POST['acc'])){
+//     header("location:login4.php");
+//     exit();
+// }
+// $sql="select * from 'member where acc='$acc' && pw='$pw'";
+// $sql1="select count(id) from member where acc='$acc' && pw='$pw'";
+// $acc=$_POST['acc'];
+// $pw=$_POST['pw'];
 
+// //$row=$pdo->query($sql)->fetch();
+// $row=$pdo->query($sql1)->fetchcolumn();
 if(!isset($_POST['acc'])){
     header("location:login4.php");
     exit();
 }
-$sql="select * from 'member where acc='$acc' && pw='$pw'";
-$sql1="select count(id) from member where acc='$acc' && pw='$pw'";
-$acc=$_POST['acc'];
-$pw=$_POST['pw'];
+ $acc=$_POST['acc'];
+ $pw=$_POST['pw'];
 
-//$row=$pdo->query($sql)->fetch();
-$row=$pdo->query($sql1)->fetchcolumn();
+$row=find('member',['acc'=>$acc,'pw'=>$pw]);
 echo $row;
 if ($row){
     // echo "帳密正確:登入成功";
